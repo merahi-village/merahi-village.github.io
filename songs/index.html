@@ -53,6 +53,36 @@ footer{text-align:center;padding:40px;opacity:.7}
 footer a {text-decoration:none}
 .reveal{opacity:0;transform:translateY(30px);transition:all .8s}
 .reveal.show{opacity:1;transform:none}
+
+
+.footer-bottom{
+  border-top:1px solid #1e293b;
+  background:#020617;
+  display:flex;
+  justify-content:center;
+  gap:6px;
+  font-size:12px;
+  padding:12px;
+}
+.footer-bottom a{
+  text-decoration:none;
+  color: #cbd5f5;
+}
+.footer-bottom a:hover {
+    color: #fff;
+}
+/* Mobile */
+@media(max-width:768px){
+  .footer-bottom{
+    flex-direction:column;
+    align-items:center;
+    font-size:12px;
+    padding:12px;
+  }
+  .dot{
+    display:none;
+  }
+}
 </style>
 </head>
 <body>
@@ -157,6 +187,12 @@ bua ke papa mehar ghuma di maiya ke.
 © <a href="https://gitesh-sharma.github.io/en/org/">Sharmaji Technology Media</a> • <a href="/index.html">Merahi Village</a>
 </footer>
 
+<div class="footer-bottom">
+  <span class="fb-left">© 2025 <a href="https://gitesh-sharma.github.io/en/org/">Sharmaji Technology Media</a></span>
+  <span class="dot">•</span>
+  <span class="fb-right">Design by <a href="https://gitesh-sharma.github.io/en/org/about-us.html">Gitesh Sharma</a></span>
+</div> 
+  
 <script>
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')})
