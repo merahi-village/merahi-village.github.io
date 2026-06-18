@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Merahi Foundation | Supported by Merahi Village</title>
+
+<meta name="description" content="Merahi Foundation is dedicated to education, healthcare, environmental awareness and community development initiatives supported by Merahi Village.">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--primary:#1877F2;
+--primary-dark:#0D5FD4;
+--light:#F5F9FF;
+--dark:#0F172A;
+--text:#1F2937;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Montserrat',sans-serif;
+background:#fff;
+color:var(--text);
+line-height:1.7;
+}
+
+a{
+text-decoration:none;
+}
+
+img{
+max-width:100%;
+display:block;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:0 20px;
+}
+
+/* HEADER */
+
+header{
+position:sticky;
+top:0;
+background:#fff;
+z-index:9999;
+box-shadow:0 2px 20px rgba(0,0,0,.08);
+}
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 0;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.logo img{
+width:60px;
+height:60px;
+border-radius:50%;
+}
+
+.logo-text{
+display:flex;
+flex-direction:column;
+}
+
+.logo-text h2{
+font-size:1.45rem;
+font-weight:900;
+letter-spacing:1px;
+color:var(--primary);
+line-height:1;
+text-transform:uppercase;
+}
+
+.logo-text span{
+font-size:.75rem;
+color:#666;
+margin-top:4px;
+}
+
+.menu{
+display:flex;
+gap:25px;
+align-items:center;
+}
+
+.menu a{
+color:#333;
+font-weight:600;
+transition:.3s;
+}
+
+.menu a:hover{
+color:var(--primary);
+}
+
+.menu-toggle{
+display:none;
+font-size:30px;
+font-weight:900;
+cursor:pointer;
+color:var(--primary);
+}
+
+/* HERO */
+
+.hero{
+background:
+linear-gradient(rgba(24,119,242,.80),
+rgba(13,95,212,.85)),
+url('banner.jpg') center/cover;
+padding:130px 20px;
+text-align:center;
+color:#fff;
+}
+
+.hero h1{
+font-size:4rem;
+font-weight:900;
+margin-bottom:15px;
+letter-spacing:2px;
+}
+
+.hero p{
+max-width:800px;
+margin:auto;
+font-size:1.1rem;
+}
+
+.btn{
+display:inline-block;
+margin-top:30px;
+padding:14px 28px;
+border-radius:50px;
+background:#fff;
+color:var(--primary);
+font-weight:800;
+transition:.3s;
+}
+
+.btn:hover{
+transform:translateY(-3px);
+}
+
+/* SECTION */
+
+.section{
+padding:90px 0;
+}
+
+.section-title{
+text-align:center;
+font-size:2.4rem;
+font-weight:800;
+color:var(--primary);
+margin-bottom:50px;
+}
+
+/* CARDS */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:#fff;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+}
+
+.card h3{
+margin-bottom:10px;
+color:var(--primary);
+}
+
+/* IMPACT */
+
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+}
+
+.stat{
+background:var(--light);
+padding:30px;
+text-align:center;
+border-radius:20px;
+}
+
+.stat h3{
+font-size:2.2rem;
+font-weight:900;
+color:var(--primary);
+}
+
+/* GALLERY */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+}
+
+.gallery img{
+height:250px;
+width:100%;
+object-fit:cover;
+border-radius:20px;
+}
+
+/* CTA */
+
+.cta{
+background:var(--primary);
+color:#fff;
+text-align:center;
+padding:90px 20px;
+}
+
+.cta h2{
+font-size:2.5rem;
+margin-bottom:15px;
+}
+
+.cta .btn{
+background:#fff;
+}
+
+/* FOOTER */
+
+footer{
+background:var(--dark);
+color:#fff;
+padding:50px 20px;
+text-align:center;
+}
+
+footer p{
+opacity:.8;
+margin-top:10px;
+}
+
+/* WHATSAPP */
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+width:60px;
+height:60px;
+border-radius:50%;
+background:#25D366;
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+box-shadow:0 8px 20px rgba(0,0,0,.2);
+z-index:999;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.menu-toggle{
+display:block;
+}
+
+.menu{
+position:absolute;
+top:90px;
+left:0;
+width:100%;
+background:#fff;
+flex-direction:column;
+padding:20px;
+display:none;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.menu.active{
+display:flex;
+}
+
+.hero h1{
+font-size:2.4rem;
+}
+
+.logo img{
+width:50px;
+height:50px;
+}
+
+.logo-text h2{
+font-size:1.05rem;
+}
+
+.section-title{
+font-size:2rem;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<header>
+<div class="container">
+
+<nav>
+
+<div class="logo">
+
+<img src="logo.png" alt="Merahi Foundation">
+
+<div class="logo-text">
+<h2>MERAHI FOUNDATION</h2>
+<span>Supported by Merahi Village</span>
+</div>
+
+</div>
+
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+<div class="menu" id="menu">
+<a href="#">Home</a>
+<a href="#about">About</a>
+<a href="#projects">Projects</a>
+<a href="#gallery">Gallery</a>
+<a href="#contact">Contact</a>
+</div>
+
+</nav>
+
+</div>
+</header>
+
+<section class="hero">
+
+<h1>MERAHI FOUNDATION</h1>
+
+<p>
+Empowering Communities Through Education,
+Healthcare, Environmental Awareness &
+Social Development.
+</p>
+
+<a href="#" class="btn">Become a Volunteer</a>
+
+</section>
+
+<section class="section" id="about">
+
+<div class="container">
+
+<h2 class="section-title">About Us</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Our Mission</h3>
+<p>
+To improve lives through sustainable community
+development initiatives and social support programs.
+</p>
+</div>
+
+<div class="card">
+<h3>Our Vision</h3>
+<p>
+A stronger, educated and self-reliant society
+built on compassion and collective action.
+</p>
+</div>
+
+<div class="card">
+<h3>Supported By</h3>
+<p>
+Merahi Village community and volunteers working
+together for positive change.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section" id="projects">
+
+<div class="container">
+
+<h2 class="section-title">Our Focus Areas</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>📚 Education Support</h3>
+<p>Scholarships, educational materials and awareness.</p>
+</div>
+
+<div class="card">
+<h3>🏥 Healthcare</h3>
+<p>Health camps and community wellness initiatives.</p>
+</div>
+
+<div class="card">
+<h3>🌱 Environment</h3>
+<p>Tree plantation and environmental awareness drives.</p>
+</div>
+
+<div class="card">
+<h3>🤝 Community Welfare</h3>
+<p>Helping families and supporting local development.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<div class="container">
+
+<h2 class="section-title">Our Impact</h2>
+
+<div class="stats">
+
+<div class="stat">
+<h3>1000+</h3>
+<p>Lives Impacted</p>
+</div>
+
+<div class="stat">
+<h3>200+</h3>
+<p>Volunteers</p>
+</div>
+
+<div class="stat">
+<h3>50+</h3>
+<p>Programs</p>
+</div>
+
+<div class="stat">
+<h3>10+</h3>
+<p>Villages Reached</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section" id="gallery">
+
+<div class="container">
+
+<h2 class="section-title">Foundation Gallery</h2>
+
+<div class="gallery">
+
+<img src="banner.jpg" alt="">
+<img src="logo.png" alt="">
+<img src="banner.jpg" alt="">
+<img src="banner.jpg" alt="">
+<img src="logo.png" alt="">
+<img src="banner.jpg" alt="">
+
+</div>
+
+</div>
+
+</section>
+
+<section class="cta">
+
+<h2>Join Our Mission</h2>
+
+<p>
+Together we can create a better future
+for our communities.
+</p>
+
+<a href="#" class="btn">Get Involved</a>
+
+</section>
+
+<footer id="contact">
+
+<h3>Merahi Foundation</h3>
+
+<p>Supported by Merahi Village</p>
+
+<p>
+© 2026 Merahi Foundation.
+All Rights Reserved.
+</p>
+
+</footer>
+
+<a class="whatsapp" href="https://wa.me/91XXXXXXXXXX">
+💬
+</a>
+
+<script>
+
+function toggleMenu(){
+document
+.getElementById("menu")
+.classList.toggle("active");
+}
+
+</script>
+
+</body>
+</html>
