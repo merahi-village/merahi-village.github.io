@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merahi Weather Dashboard | Merahi Village</title>
+<meta name="description" content="Live weather dashboard for Merahi village, Siwan, Bihar — today's conditions, the past week, and the week ahead.">
+<link rel="canonical" href="https://merahi-village.github.io/weather.html">
+<meta property="og:title" content="Merahi Weather Dashboard">
+<meta property="og:image" content="https://merahi-village.github.io/images/logo_merahi.webp">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#014421">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a class="brand" href="index.html">
+      <img src="https://merahi-village.github.io/images/logo_merahi.webp" alt="Merahi Village Logo">
+      <div class="brand-text"><div class="name">Merahi Village</div><div class="tagline">Our Village, Our Identity</div></div>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" id="navToggle">☰</button>
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html">Home</a>
+      <a href="about-village.html">About Village</a>
+      <a href="places.html">Places</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="videos.html">Videos</a>
+      <a href="weather.html" class="active" aria-current="page">Weather</a>
+      <a href="contact-us.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="background-image:linear-gradient(160deg, rgba(1,68,33,.90), rgba(11,92,51,.82)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1600&auto=format&fit=crop');">
+  <div class="hero-inner">
+    <div class="crumb"><a href="index.html">Home</a> / Weather</div>
+    <div class="eyebrow">Live Conditions · Merahi, Siwan, Bihar</div>
+    <h1>Weather Dashboard</h1>
+    <p class="lede">Today's conditions, the past week, and the week ahead for Merahi — updated live each
+      time you open this page.</p>
+  </div>
+</section>
+
+<main class="content">
+  <div id="wStatus" class="weather-status" style="display:none;max-width:900px;margin:0 auto 20px;"></div>
+
+  <section class="block" id="today">
+    <div class="kicker">Right Now</div>
+    <h2>🌤️ Today in Merahi</h2>
+    <div class="weather-now" id="weatherNow">
+      <div>
+        <div class="temp" id="wTemp">--°</div>
+        <div class="desc" id="wDesc">Loading live weather…</div>
+        <div class="updated" id="wUpdated"></div>
+      </div>
+      <div style="font-size:3.2rem;" id="wIcon">🌡️</div>
+    </div>
+    <div class="weather-metrics">
+      <div class="wmetric"><div class="ic">🤔</div><div class="val" id="wFeels">--°</div><div class="lbl">Feels Like</div></div>
+      <div class="wmetric"><div class="ic">💧</div><div class="val" id="wHumidity">--%</div><div class="lbl">Humidity</div></div>
+      <div class="wmetric"><div class="ic">💨</div><div class="val" id="wWind">-- km/h</div><div class="lbl">Wind</div></div>
+      <div class="wmetric"><div class="ic">🧭</div><div class="val" id="wPressure">-- hPa</div><div class="lbl">Pressure</div></div>
+    </div>
+  </section>
+
+  <svg class="grain-divider" viewBox="0 0 120 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <line x1="0" y1="10" x2="120" y2="10" stroke="#c99a2e" stroke-width="1"/>
+    <g stroke="#c99a2e" stroke-width="1.4" stroke-linecap="round">
+      <path d="M52 10c-3-4-3-7 0-9M52 10c3-4 3-7 0-9"/><path d="M60 10c-3-4-3-7 0-9M60 10c3-4 3-7 0-9"/><path d="M68 10c-3-4-3-7 0-9M68 10c3-4 3-7 0-9"/>
+    </g>
+  </svg>
+
+  <section class="block">
+    <div class="kicker">Looking Back</div>
+    <h2>📅 Past 7 Days</h2>
+    <p>How the weather has moved through the last week.</p>
+    <div class="forecast-strip" id="pastStrip"></div>
+  </section>
+
+  <section class="block">
+    <div class="kicker">Looking Ahead</div>
+    <h2>🔮 Next 7 Days</h2>
+    <p>The forecast for today and the week ahead.</p>
+    <div class="forecast-strip" id="futureStrip"></div>
+  </section>
+
+  <p class="foot-note">Weather data is provided live by <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a>
+    for Merahi's approximate coordinates (26.42°N, 84.24°E) and refreshes each time this page loads.
+    Forecasts more than a day or two out are naturally less certain.</p>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <img class="flogo" src="https://merahi-village.github.io/images/merahi_footer_logo.png" alt="Merahi Village Logo">
+      <p>Merahi is a medium-sized, rural village located in the Hasanpura block of the Siwan district in
+        Bihar, India. Primarily an agricultural community, it spans about 258.8 hectares and is home to
+        nearly 1,830 residents.</p>
+      <div class="social-row">
+        <a href="https://youtube.com/@MerahiVillage" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube"></a>
+        <a href="https://facebook.com/MerahiVillage" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook"></a>
+        <a href="https://instagram.com/merahivillage" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram"></a>
+        <a href="https://x.com/MerahiVillage" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X"></a>
+        <a href="https://www.whatsapp.com/channel/0029Va9eb2oHltY80uxqWP1q" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp"></a>
+      </div>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about-village.html">About Village</a></li>
+        <li><a href="places.html">Explore Places</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="videos.html">Videos</a></li>
+        <li><a href="weather.html">Weather</a></li>
+        <li><a href="contact-us.html">Contact Us</a></li>
+        <li><a href="policies.html">Policies</a></li>
+        <li><a href="sitemap.html">Sitemap</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p>Merahi Village Community<br>Merahi, Hasanpura, Siwan, Bihar, India - 841240<br>merahivillage@gmail.com</p>
+    </div>
+  </div>
+  <div class="footer-divider">
+    <span class="fd-line"></span>
+<span class="fd-icon" aria-hidden="true">🌾</span>
+    <span class="fd-line"></span>
+  </div>
+  <div class="footer-bottom-text">
+    © 2026 Merahi Village • All Rights Reserved. • Design by <a href="https://gitesh-sharma.github.io/en/" target="_blank" rel="noopener">Gitesh Sharma</a> • Hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
