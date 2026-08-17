@@ -129,4 +129,23 @@ document.addEventListener('DOMContentLoaded', function () {
     })();
   }
 
+  /* ---------- Contact form → Google Form (contact-us.html) ---------- */
+  var contactForm = document.getElementById('contactForm');
+  var hiddenIframe = document.getElementById('hidden_iframe');
+  var formCard = document.getElementById('formCard');
+  var formSuccess = document.getElementById('formSuccess');
+  if (contactForm && hiddenIframe && formSuccess) {
+    var submitted = false;
+    contactForm.addEventListener('submit', function () {
+      submitted = true; // native submission proceeds, targeting the hidden iframe
+    });
+    hiddenIframe.addEventListener('load', function () {
+      if (submitted) {
+        submitted = false;
+        if (formCard) formCard.style.display = 'none';
+        formSuccess.style.display = 'block';
+      }
+    });
+  }
+
 });
