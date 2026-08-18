@@ -271,6 +271,16 @@ a.chip:hover{background:var(--gold-soft);color:var(--green);}
 .footer-bottom-text{text-align:center;font-size:.8rem;color:#a9cdb8;padding:14px 20px 22px;}
 .footer-bottom-text a{color:#c9e2d3;}
 .footer-bottom-text a:hover{color:#fff;}
+.footer-disclaimer{
+  text-align:center;
+  font-size:.72rem;
+  font-style:italic;
+  color:#7fa48f;
+  max-width:640px;
+  margin:6px auto 0;
+  padding:0 20px;
+  line-height:1.5;
+}
 
 
 /* ---------- Table scroll wrapper (mobile-safe data tables) ---------- */
