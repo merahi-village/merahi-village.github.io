@@ -173,10 +173,10 @@ a.chip:hover{background:var(--gold-soft);color:var(--green);}
 .carousel-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.9);border:none;width:40px;height:40px;border-radius:50%;font-size:1.1rem;cursor:pointer;color:var(--green);z-index:5;}
 .carousel-arrow.prev{left:12px;} .carousel-arrow.next{right:12px;}
 .carousel-arrow:hover{background:#fff;}
-.carousel-dots{display:flex;justify-content:center;gap:8px;padding:12px 0;background:#fff;}
+.carousel-dots{display:flex;justify-content:center;gap:8px;padding:12px 0;background:rgba(0, 0, 0, 0);}
 .carousel-dots button{width:9px;height:9px;border-radius:50%;border:none;background:var(--border);cursor:pointer;padding:0;}
 .carousel-dots button.active{background:var(--gold);}
-.gallery-cta{text-align:center;margin-top:18px;}
+.gallery-cta{text-align:left;margin-top:18px;}
 
 /* ---------- Slider row ---------- */
 .slider-wrap{position:relative;margin-top:22px;}
