@@ -32,10 +32,10 @@ background:url('https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/1e/76/ad/1e
 display:flex;align-items:center;position:relative}
 .hero:before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.85),rgba(0,0,0,.45))}
 .content{position:relative;max-width:1200px;margin:auto;padding:40px;color:#fff}
-.badge{display:inline-block;padding:5px 11px;border-radius:999px;background:#014421;font-weight:480;background:linear-gradient(135deg,#22c55e,#15803d); color:white; box-shadow:0 10px 30px rgba(34,197,94,.3)}
+.badge{display:inline-block;padding:5px 11px;border-radius:999px;background:#014421;font-weight:480;background:linear-gradient(135deg,#22c55e,#15803d); color:white; box-shadow:0 10px 30px rgba(34,197,34,0.12)}
 h1{font-size:clamp(2.5rem,6vw,5rem);margin:20px 0}
 .sub{font-size:1.15rem;opacity:.9}
-.btn{display:inline-block; margin-top:20px;padding:14px 24px;border-radius:130px;background:#014421;font-weight:550;background:linear-gradient(135deg,#22c55e,#15803d); color:white; box-shadow:0 10px 30px rgba(34,197,94,.3); text-decoration:none;}
+.btn{display:inline-block; margin-top:20px;padding:14px 24px;border-radius:130px;background:#014421;font-weight:550;background:linear-gradient(135deg,#22c55e,#15803d); color:white; box-shadow:0 10px 30px rgba(34,197,34,0.12); text-decoration:none}
 .btn:hover{transform:translateY(-5px);}
 .wrap{max-width:1200px;margin:auto;padding:70px 20px}
 .glass{background:var(--card);backdrop-filter:var(--glass);border:1px solid var(--border);border-radius:24px;padding:28px}
@@ -102,7 +102,7 @@ footer a {text-decoration:none}
 <!---<audio controls>
 <source src="/songs/merahi-ke-mela-ghuma-di.mp3" type="audio/mpeg">
 </audio>--->
-  <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/0TmXx7Dp8vnNjeS3n8oAt9?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+  <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/0TmXx7Dp8vnNjeS3n8oAt9?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 </div>
 
 <br>
@@ -184,6 +184,11 @@ bua ke papa mehar ghuma di maiya ke.
 
 </div>
 
+<!-- Back to Home button inserted here (below song information and above footer) -->
+<div style="text-align:center;margin:20px 0;">
+  <a href="/index.html" class="btn" style="padding:12px 22px;border-radius:999px;display:inline-block;">Back to Home Page</a>
+</div>
+
 <!-- <footer>
 © <a href="https://gitesh-sharma.github.io/en/org/">Sharmaji Technology Media</a> • <a href="/index.html">Merahi Village</a>
 </footer> -->
@@ -192,8 +197,8 @@ bua ke papa mehar ghuma di maiya ke.
   <span class="fb-left">© <a href="https://gitesh-sharma.github.io/en/org/">Sharmaji Technology Media</a></span>
   <span class="dot">•</span>
   <span class="fb-right">Design by <a href="https://gitesh-sharma.github.io/en">Gitesh Sharma</a></span>
-</div> 
-  
+</div>  
+
 <script>
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')})
