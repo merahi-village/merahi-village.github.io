@@ -268,7 +268,7 @@ a.chip:hover{background:var(--gold-soft);color:var(--green);}
 .footer-divider{display:flex;align-items:center;justify-content:center;gap:16px;max-width:560px;margin:0 auto;padding:22px 20px 0;}
 .fd-line{flex:1;height:1px;background:rgba(255,255,255,.28);}
 .fd-icon{font-size:1.7rem;line-height:1;flex-shrink:0;}
-.footer-bottom-text{text-align:center;font-size:.8rem;color:#a9cdb8;padding:14px 20px 22px;}
+.footer-bottom-text{text-align:center;font-size:.8rem;color:#a9cdb8;padding:14px 12px;}
 .footer-bottom-text a{color:#c9e2d3;}
 .footer-bottom-text a:hover{color:#fff;}
 .footer-disclaimer{
