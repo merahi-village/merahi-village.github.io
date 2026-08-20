@@ -280,8 +280,8 @@ a.chip:hover{background:var(--gold-soft);color:var(--green);}
   font-style:italic;
   color:#7fa48f;
   max-width:auto;
-  margin:5px auto 0;
-  padding:0 2px;
+  margin:2px auto 0;
+  padding:0 5px;
   line-height:1;
 }
 
