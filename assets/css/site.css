@@ -273,7 +273,7 @@ a.chip:hover{background:var(--gold-soft);color:var(--green);}
 .footer-bottom-text a:hover{color:#fff;}
 .footer-disclaimer{
   text-align:center;
-  font-size:.60rem;
+  font-size:.65rem;
   font-style:italic;
   color:#7fa48f;
   max-width:auto;
