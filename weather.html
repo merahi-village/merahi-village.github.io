@@ -24,10 +24,67 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://merahi-village.github.io"},
-    {"@type": "ListItem", "position": 2, "name": "Weather", "item": "https://merahi-village.github.io/weather.html"}
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://merahi-village.github.io"},
+        {"@type": "ListItem", "position": 2, "name": "Weather", "item": "https://merahi-village.github.io/weather.html"}
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "name": "Merahi Weather Dashboard",
+      "description": "Live weather dashboard for Merahi village, Siwan, Bihar — today's conditions, the past week, and the week ahead.",
+      "url": "https://merahi-village.github.io/weather.html",
+      "about": { "@id": "https://merahi-village.github.io/#organization" },
+      "isPartOf": { "@id": "https://merahi-village.github.io/#website" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Merahi's climate like?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Merahi lies in Siwan district on Bihar's Gangetic plains, which has a humid subtropical climate (Koppen Cwa) — hot summers, a monsoon season, and cool, dry winters."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How hot does it get in Merahi in summer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Summers, from April to June, are hot, with daytime temperatures commonly reaching 38-44 degrees Celsius, especially in May and June. Hot, dry Loo winds are common in this part of Bihar during this period."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When is the monsoon season in Merahi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The monsoon usually arrives around late June and lasts through September, with July typically bringing the heaviest rainfall."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How cold does it get in Merahi in winter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Winters, from November to mid-March, are cool and pleasant. January is the coldest month — nighttime lows can drop to around 5 degrees Celsius, among the coolest in Bihar, though daytime temperatures usually stay in the high teens to low 20s Celsius."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the best time to visit Merahi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "October to March, during the cooler, drier months, is generally the most comfortable time to visit."
+          }
+        }
+      ]
+    }
   ]
 }
 </script>
@@ -110,6 +167,49 @@
   <p class="foot-note">Weather data is provided live by <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a>
     for Merahi's approximate coordinates (26.42°N, 84.24°E) and refreshes each time this page loads.
     Forecasts more than a day or two out are naturally less certain.</p>
+
+    <section class="block">
+    <div class="kicker">Good To Know</div>
+    <h2>❓ Merahi Weather — FAQ</h2>
+    <div class="info-grid" style="grid-template-columns:1fr;max-width:720px;">
+      <div class="info-item">
+        <div class="ic">🌦️</div>
+        <div>
+          <div class="k">What is Merahi's climate like?</div>
+          <div class="v">Merahi lies in Siwan district on Bihar's Gangetic plains, which has a humid subtropical climate (Köppen Cwa) — hot summers, a monsoon season, and cool, dry winters.</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="ic">🔥</div>
+        <div>
+          <div class="k">How hot does it get in Merahi in summer?</div>
+          <div class="v">Summers, from April to June, are hot, with daytime temperatures commonly reaching 38–44°C, especially in May and June. Hot, dry "Loo" winds are common in this part of Bihar during this period.</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="ic">🌧️</div>
+        <div>
+          <div class="k">When is the monsoon season in Merahi?</div>
+          <div class="v">The monsoon usually arrives around late June and lasts through September, with July typically bringing the heaviest rainfall.</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="ic">❄️</div>
+        <div>
+          <div class="k">How cold does it get in Merahi in winter?</div>
+          <div class="v">Winters, from November to mid-March, are cool and pleasant. January is the coldest month — nighttime lows can drop to around 5°C, among the coolest in Bihar, though daytime temperatures usually stay in the high teens to low 20s°C.</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="ic">🗓️</div>
+        <div>
+          <div class="k">What is the best time to visit Merahi?</div>
+          <div class="v">October to March, during the cooler, drier months, is generally the most comfortable time to visit.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
 </main>
 
 <footer class="site-footer">
