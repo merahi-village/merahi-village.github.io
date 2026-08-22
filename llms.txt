@@ -2,31 +2,25 @@
 
 > Merahi is a rural farming village in the Hasanpura block of Siwan district, Bihar, India — explore its people, places, culture and everyday life.
 
-## Contact
+## Explore Merahi Village - Places
 
-- [Contact Us | Merahi Village](https://merahi-village.github.io/contact-us.html): Get in touch with Merahi Village — send a message and it reaches the village community team directly.
+- [Shiv Mandir, Merahi | Merahi Village](https://merahi-village.github.io/places/shiv-mandir.html): Shiv Mandir on Sharmaji Chowk Road — the oldest temple in Merahi village, Siwan, Bihar
+- [Maa Kali Mandir, Merahi | Merahi Village](https://merahi-village.github.io/places/maa-kali-mandir.html): Maa Kali Mandir on the Hasanpura Road, Merahi — a peaceful temple with an open field beside it where local children gather to play
+- [Pakari Panchayat — Merahi's Gram Panchayat | Merahi Village](https://merahi-village.github.io/places/pakari-panchayat.html): Pakari Gram Panchayat, Hasanpura block, Siwan — the panchayat Merahi village falls under. Mukhiya, office timings, services available, helpline numbers, and demographics
+- [Braham Baba, Merahi | Merahi Village](https://merahi-village.github.io/places/brahma-baba.html): Braham Baba — a worshipped peepal tree in Merahi village, with a related Brahmsthan shrine nearby on the Dibi-Merahi road
+- [Primary School, Merahi | Merahi Village](https://merahi-village.github.io/places/primary-school.html): Primary School page for Merahi Village
+- [Chhath Ghat, Merahi | Merahi Village](https://merahi-village.github.io/places/chhath-ghat.html): Chhath Ghat, also known as Meraha — the village pond in Merahi used for cattle, irrigation and Chhath Puja celebrations
+- [Primary Health Centre, Jalalpur — Healthcare Near Merahi | Merahi Village](https://merahi-village.github.io/places/primary-health-center-jalalpur.html): Primary Health Centre (Community Health Centre), Jalalpur — the nearest government healthcare facility serving Merahi and surrounding villages in Hasanpura block, Siwan district
+- [Ram Janki, Durga, Shiv Mandir | Merahi Village](https://merahi-village.github.io/places/ram-janki-durga-shiv-mandir.html): Ram Janki, Durga, Shiv Mandir — Merahi village
 
-## About
+## Main Pages
 
-- [About Merahi Village — Geography, People & Life | Merahi Village](https://merahi-village.github.io/about-village.html): Merahi is a farming village in the Hasanpura block of Siwan district, Bihar, India. Learn about its geography, people, governance, economy, education and culture.
-
-## Other Important Pages
-
-- [Sitemap | Merahi Village](https://merahi-village.github.io/sitemap.xml): A comprehensive list of the website's pages.
-
-## Explore Merahi Village
-
-- [Places | Merahi Village](https://merahi-village.github.io/places.html): Every landmark and community spot in Merahi.
-
-## Village Weather
-
-- [Weather Dashboard | Merahi Village](https://merahi-village.github.io/weather.html): Today's conditions, the past week, and the week ahead for Merahi — updated live each time you open this page.
-
-## Q&A
-
-- [FAQs - Merahi Village](https://merahi-village.github.io/faqs.html): Where Merahi is, who lives here, how the village works, and how to get things done — answered in one place.
-
-## Video Gallery
-
-- [Videos - Merahi Village](https://merahi-village.github.io/videos.html): Short films from around the village — its ghats, temples, sacred sites and school — straight from our official YouTube channel.
-
+- [Merahi Village — Our Village, Our Identity](https://merahi-village.github.io/index.html): Merahi is a rural farming village in the Hasanpura block of Siwan district, Bihar, India — explore its people, places, culture and everyday life
+- [Places in Merahi Village | Merahi Village](https://merahi-village.github.io/places.html): Explore the landmarks and community places of Merahi village — Chhath Ghat, Shiv Mandir, Ram Janki Durga Shiv Mandir, Brahma Baba and the village primary school
+- [About Merahi Village — Geography, People & Life | Merahi Village](https://merahi-village.github.io/about-village.html): Merahi is a farming village in the Hasanpura block of Siwan district, Bihar, India. Learn about its geography, people, governance, economy, education and culture
+- [Photo Gallery | Merahi Village](https://merahi-village.github.io/gallery.html): All the real photos of Merahi village - Chhath Ghat, Shiv Mandir, Ram Janki Durga Shiv Mandir, Brahma Baba, the Primary School and village farmland
+- [Videos | Merahi Village](https://merahi-village.github.io/videos.html): Watch Merahi village on video — Chhath Ghat, Ram Janki Durga Shiv Mandir, Brahma Baba and the Primary School, from the official Merahi Village YouTube channel
+- [Merahi Weather Dashboard | Merahi Village](https://merahi-village.github.io/weather.html): Live weather dashboard for Merahi village, Siwan, Bihar — today
+- [Contact Us | Merahi Village](https://merahi-village.github.io/contact-us.html): Get in touch with Merahi Village — send a message and it reaches the village community team directly
+- [Sitemap | Merahi Village](https://merahi-village.github.io/sitemap.html): A complete list of every page on the Merahi Village website
+- [Website Policies | Merahi Village](https://merahi-village.github.io/policies.html): Privacy, terms, cookies, third-party services and data collection details for the Merahi Village website
