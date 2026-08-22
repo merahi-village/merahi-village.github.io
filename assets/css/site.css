@@ -316,3 +316,48 @@ a.chip:hover{background:var(--gold-soft);color:var(--green);}
 }
 .channel-banner .cb-text h3{margin:0 0 4px;color:#fff;font-size:1.2rem;}
 .channel-banner .cb-text p{margin:0;color:#dcefe3;font-size:.9rem;}
+
+/* ---------- FAQ accordion ---------- */
+.faq-group{margin-top:20px;}
+.faq-group-title{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;color:var(--green);font-size:1.15rem;margin:34px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border);}
+
+.faq-item{
+  position:relative;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:14px;
+  margin-bottom:20px;
+  overflow:hidden;
+  box-shadow:0 3px 10px rgba(1,68,33,.05);
+  transition:box-shadow .2s ease, border-color .2s ease, transform .2s ease;
+}
+.faq-item:not([open]):hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(1,68,33,.10);border-color:#d7cfb4;}
+.faq-item[open]{border-color:var(--gold);box-shadow:0 12px 28px rgba(1,68,33,.13);}
+
+.faq-item::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
+  background:var(--gold);opacity:0;transition:opacity .2s ease;
+}
+.faq-item[open]::before{opacity:1;}
+
+.faq-item summary{
+  list-style:none;cursor:pointer;padding:20px 60px 20px 24px;font-weight:700;color:var(--ink);
+  position:relative;font-size:1rem;line-height:1.5;
+}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::after{
+  content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);
+  width:30px;height:30px;border-radius:50%;background:var(--green-pale);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;color:var(--green);font-weight:700;line-height:1;
+  transition:background .2s ease, color .2s ease, transform .25s ease;
+}
+.faq-item[open] summary::after{content:"\2212";background:var(--gold);color:#fff;transform:translateY(-50%) rotate(180deg);}
+.faq-item[open] summary{border-bottom:1px solid var(--border);color:var(--green);}
+
+.faq-item .faq-answer{padding:10px 24px 24px;color:var(--ink-soft);font-size:.96rem;line-height:1.8;}
+.faq-answer a{font-weight:600;text-decoration:underline;text-decoration-color:var(--gold-soft);text-underline-offset:3px;}
+
+.faq-toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;}
+.faq-toc a{background:var(--green-pale);color:var(--green);font-size:.82rem;font-weight:600;padding:6px 13px;border-radius:999px;}
+.faq-toc a:hover{background:var(--gold-soft);}
