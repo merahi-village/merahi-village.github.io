@@ -122,23 +122,68 @@
   </div>
 </section>
 
+<section class="yt-channel-header">
+  <div class="yt-channel-inner">
+    <img class="yt-avatar" src="https://merahi-village.github.io/images/logo_merahi.webp" alt="Merahi Village YouTube Channel">
+    <div class="yt-channel-info">
+      <h2>Merahi Village</h2>
+      <div class="yt-handle">@MerahiVillage</div>
+      <div class="yt-meta">Official Channel · Village Vlogs, Shorts &amp; Documentaries</div>
+    </div>
+    <a href="https://www.youtube.com/@MerahiVillage?sub_confirmation=1" target="_blank" rel="noopener" class="yt-subscribe">▶ Subscribe</a>
+  </div>
+</section>
+  
 <main class="content">
-  <section class="block">
+  <section class="block" id="recent">
     <div class="kicker">Recent</div>
-    <h2>🎬 Recent Village</h2>
-    <p>This video is recently uploaded on location in Merahi and published on our official channel.</p>
+    <h2>🎬 Recently Uploaded</h2>
+    <p>The latest video published on our official channel — this updates automatically as new videos go up, no need to check back and refresh manually.</p>
+    <div class="recent-frame">
+      <iframe src="https://www.youtube.com/embed/videoseries?list=UUzDexeImbwZedYocmEnVy_A" title="Recent uploads — Merahi Village" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
   </section>
 
-  <section class="block">
+  <section class="block" id="shorts">
     <div class="kicker">Shorts</div>
-    <h2>🎬 Shorts Videos of Village</h2>
-    <p>Here is the list of short videos in scrollable form</p>
+    <h2>🎬 Shorts From The Village</h2>
+    <p>Quick glimpses of everyday life in Merahi — scroll sideways for more.</p>
+    <div class="shelf-wrap">
+      <button class="shelf-arrow prev" id="shortsPrev" aria-label="Scroll left">‹</button>
+      <div class="shelf-row" id="shortsRow">
+        <div class="shorts-card"><iframe src="https://www.youtube.com/embed/szS3toqT97I" title="Merahi Village Short" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <div class="shorts-card"><iframe src="https://www.youtube.com/embed/LOLBWPe4jOc" title="Merahi Village Short" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <div class="shorts-card"><iframe src="https://www.youtube.com/embed/hHkV0cl8hEY" title="Merahi Village Short" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <div class="shorts-card"><iframe src="https://www.youtube.com/embed/TkFv6D8xPcU" title="Merahi Village Short" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <div class="shorts-card"><iframe src="https://www.youtube.com/embed/ZYnxvf-dMks" title="Merahi Village Short" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <div class="shorts-card"><iframe src="https://www.youtube.com/embed/9ax57AJlRMk" title="Merahi Village Short" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <!-- ADD MORE SHORTS HERE: copy a <div class="shorts-card">...</div> block above,
+             swap in a real video ID from your channel, repeat until you have 25+ -->
+        <a class="shorts-more-card" href="https://www.youtube.com/@MerahiVillage/shorts" target="_blank" rel="noopener">
+          <div class="ic">▶️</div>
+          <div>View All Shorts<br>on YouTube</div>
+        </a>
+      </div>
+      <button class="shelf-arrow next" id="shortsNext" aria-label="Scroll right">›</button>
+    </div>
   </section>
 
-  <section class="block">
+  <section class="block" id="playlists">
     <div class="kicker">Lists</div>
-    <h2>🎬 Playlists of Village</h2>
-    <p>About Playlist - What this playlist video is talking about?</p>
+    <h2>🎬 Playlists</h2>
+    <p>Videos grouped by theme — browse a full playlist at once.</p>
+    <div class="shelf-wrap">
+      <button class="shelf-arrow prev" id="playlistPrev" aria-label="Scroll left">‹</button>
+      <div class="shelf-row" id="playlistRow">
+        <div class="playlist-card">
+          <iframe src="https://www.youtube.com/embed/videoseries?list=UUzDexeImbwZedYocmEnVy_A" title="All Uploads — Merahi Village" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <div class="pl-body"><h3>All Uploads</h3><p>Every video published on the channel, oldest to newest.</p></div>
+        </div>
+        <!-- ADD MORE PLAYLISTS HERE: copy the .playlist-card block above, swap
+             list=UUzDexeImbwZedYocmEnVy_A for a real list=PL... ID from your channel -->
+      </div>
+      <button class="shelf-arrow next" id="playlistNext" aria-label="Scroll right">›</button>
+    </div>
   </section>
   
   <section class="block">
