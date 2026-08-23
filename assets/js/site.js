@@ -160,3 +160,4 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   wireShelf('shortsRow', 'shortsPrev', 'shortsNext', 190);
   wireShelf('playlistRow', 'playlistPrev', 'playlistNext', 340);
+  wireShelf('videosSlider', 'videoSlidePrev', 'videoSlideNext', 290);
