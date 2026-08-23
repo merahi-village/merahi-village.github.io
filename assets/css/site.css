@@ -320,7 +320,7 @@ a.chip:hover{background:var(--gold-soft);color:var(--green);}
 /* ---------- YouTube-style channel header (videos.html) ---------- */
 .yt-channel-header{
   background:linear-gradient(160deg, rgba(1,68,33,.94), rgba(11,92,51,.88)),
-    url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop') center/cover;
+    url('https://yt3.googleusercontent.com/eYmfUihxmGwfov0e2_Vc_zjsosGb4j1VMnniPWLf4DDQAInhwpxEKFkqUNFNYXl98C67ze4K=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj?q=80&w=1600&auto=format&fit=crop') center/cover;
   padding:0 0 26px;
 }
 .yt-channel-inner{max-width:1180px;margin:0 auto;padding:36px 20px 0;display:flex;align-items:flex-end;gap:22px;flex-wrap:wrap;}
