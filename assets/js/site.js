@@ -149,3 +149,14 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 });
+
+  /* ---------- Video shelves — Shorts & Playlists (videos.html) ---------- */
+  function wireShelf(rowId, prevId, nextId, amount) {
+    var row = document.getElementById(rowId);
+    if (!row) return;
+    var prevBtn = document.getElementById(prevId), nextBtn = document.getElementById(nextId);
+    if (prevBtn) prevBtn.addEventListener('click', function () { row.scrollBy({ left: -amount, behavior: 'smooth' }); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { row.scrollBy({ left: amount, behavior: 'smooth' }); });
+  }
+  wireShelf('shortsRow', 'shortsPrev', 'shortsNext', 190);
+  wireShelf('playlistRow', 'playlistPrev', 'playlistNext', 340);
