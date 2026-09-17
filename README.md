@@ -137,6 +137,7 @@ Hosted on **GitHub Pages**, served automatically from this repository. Push to t
 ## 📬 Contact
 
 - **Email:** merahivillage@gmail.com
+- **Merahi Village Blog:** [merahivillage.blogspot.com](https://merahivillage.blogspot.com)
 - **YouTube:** [@MerahiVillage](https://www.youtube.com/@MerahiVillage)
 - **Instagram:** [@merahivillage](https://instagram.com/merahivillage)
 - **Facebook:** [Merahi Village](https://facebook.com/MerahiVillage)
