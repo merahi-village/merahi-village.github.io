@@ -1,0 +1,41 @@
+name: Sync Blogger posts to GitHub Pages
+
+on:
+  schedule:
+    # Runs every 30 minutes. Blogger has no webhook/push option, so this
+    # polls the public feed instead — closest thing to "automatic" available.
+    - cron: '*/30 * * * *'
+  workflow_dispatch: {}   # lets you trigger it manually from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install beautifulsoup4
+
+      - name: Run sync script
+        run: python3 scripts/sync_blogger.py
+
+      - name: Commit and push if anything changed
+        run: |
+          git config user.name "merahi-blog-bot"
+          git config user.email "actions@github.com"
+          git add blog/
+          if git diff --cached --quiet; then
+            echo "No new or changed posts — nothing to commit."
+          else
+            git commit -m "Sync: update blog pages from Blogger feed"
+            git push
+          fi
