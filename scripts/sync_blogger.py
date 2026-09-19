@@ -27,6 +27,141 @@ from bs4 import BeautifulSoup
 FEED_URL = "https://merahivillage.blogspot.com/feeds/posts/default?alt=json&max-results=500"
 OUT_DIR = "blog"
 SITE_ROOT = "https://merahi-village.github.io"
+FULL_SITEMAP_PATH = "sitemap-full.html"
+
+# ---- Site structure that doesn't change often — edit this list by hand
+#      if you ever add/remove a real page from the site. ----
+MAIN_PAGES = [
+    ("Home", "index.html", "Hero, village highlights, gallery & places preview"),
+    ("About Village", "about-village.html", "Geography, people, governance, economy, culture"),
+    ("Places", "places.html", "All landmarks and community spots in Merahi"),
+    ("Gallery", "gallery.html", "Every real photo of the village"),
+    ("Videos", "videos.html", "Village films from our YouTube channel"),
+    ("Weather", "weather.html", "Live conditions, past week & forecast"),
+    ("FAQs", "faqs.html", "Everything about Merahi, answered in one place"),
+    ("Contact Us", "contact-us.html", "Send a message to the village team"),
+]
+PLACE_PAGES = [
+    ("Chhath Ghat", "places/chhath-ghat.html", "Riverside gathering point for Chhath Puja"),
+    ("Shiv Mandir", "places/shiv-mandir.html", "The village's oldest temple"),
+    ("Ram Janki, Durga, Shiv Mandir", "places/ram-janki-durga-shiv-mandir.html", "Landmark temple at the village entrance"),
+    ("Brahma Baba", "places/brahma-baba.html", "Worshipped peepal tree, two locations"),
+    ("Primary School", "places/primary-school.html", "Government school, teaching since 1960"),
+    ("Primary Health Centre, Jalalpur", "places/primary-health-center-jalalpur.html", "The nearest government healthcare facility"),
+    ("Maa Kali Mandir", "places/maa-kali-mandir.html", "A peaceful temple on Hasanpura Road"),
+    ("Pakari Panchayat", "places/pakari-panchayat.html", "The gram panchayat Merahi falls under"),
+]
+LEGAL_PAGES = [
+    ("Policies", "policies.html", "Privacy Policy, Terms & Conditions, Disclaimer — all in one page"),
+]
+INFO_PAGES = [
+    ("Sitemap", "sitemap.html", "The short, human-friendly sitemap"),
+    ("Full Sitemap", "sitemap-full.html", "This page — every single page on the site, always up to date"),
+]
+
+ROOT_HEADER_TMPL = """<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{title} | Merahi Village</title>
+<meta name="description" content="{description}">
+<link rel="canonical" href="{canonical}">
+<meta property="og:title" content="{title}">
+<meta property="og:image" content="https://merahi-village.github.io/images/logo_merahi.webp">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#014421">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Merahi Village">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a class="brand" href="index.html">
+      <img src="https://merahi-village.github.io/images/logo_merahi.webp" alt="Merahi Village Logo">
+      <div class="brand-text"><div class="name">Merahi Village</div><div class="tagline">Our Village, Our Identity</div></div>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" id="navToggle">☰</button>
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html">Home</a>
+      <a href="about-village.html">About Village</a>
+      <a href="places.html">Places</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="videos.html">Videos</a>
+      <a href="weather.html">Weather</a>
+      <a href="contact-us.html">Contact</a>
+    </nav>
+  </div>
+</header>
+"""
+
+ROOT_FOOTER_HTML = """
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <img class="flogo" src="https://merahi-village.github.io/images/merahi_footer_logo.png" alt="Merahi Village Logo">
+      <p>Merahi is a medium-sized, rural village located in the Hasanpura block of the Siwan district in
+        Bihar, India. Primarily an agricultural community, it spans about 258.8 hectares and is home to
+        nearly 1,830 residents.</p>
+      <div class="social-row">
+        <a href="https://youtube.com/@MerahiVillage" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube"></a>
+        <a href="https://facebook.com/MerahiVillage" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook"></a>
+        <a href="https://instagram.com/merahivillage" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram"></a>
+        <a href="https://x.com/MerahiVillage" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X"></a>
+        <a href="https://www.whatsapp.com/channel/0029Va9eb2oHltY80uxqWP1q" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp"></a>
+      </div>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about-village.html">About Village</a></li>
+        <li><a href="contact-us.html">Contact Us</a></li>
+        <li><a href="sitemap.html">Sitemap</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Discover</h4>
+      <ul>
+        <li><a href="places.html">Explore Places</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="videos.html">Videos</a></li>
+        <li><a href="weather.html">Weather</a></li>
+        <li><a href="blog/index.html">Blog</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Information</h4>
+      <ul>
+        <li><a href="policies.html#privacy">Privacy Policy</a></li>
+        <li><a href="policies.html#terms">Terms &amp; Conditions</a></li>
+        <li><a href="policies.html#disclaimer">Disclaimer</a></li>
+        <li><a href="faqs.html">FAQs</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p>Merahi Village Community<br>Merahi, Hasanpura, Siwan, Bihar, India - 841240<br>merahivillage@gmail.com</p>
+    </div>
+  </div>
+  <div class="footer-divider">
+    <span class="fd-line"></span>
+<span class="fd-icon" aria-hidden="true">🌾</span>
+    <span class="fd-line"></span>
+  </div>
+  <div class="footer-bottom-text">
+    © 2026 Merahi Village, All Rights Reserved. • Managed by <a href="https://gitesh-sharma.github.io/en/org/" target="_blank" rel="noopener">Sharmaji Technology Media</a> • Hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a>
+  </div>
+  <p class="footer-disclaimer">This website is an independent, non-governmental informational platform. It is not affiliated with, endorsed by, or operated by any government body, political party, political candidate, or government department. All data is based on Office of the Registrar General &amp; Census Commissioner, Ministry of Home Affairs, Government of India, Open Government Data Platform India, News Sources and other local communities.</p>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
+"""
 
 HEADER_TMPL = """<!DOCTYPE html>
 <html lang="en">
@@ -298,6 +433,73 @@ def write_index(posts):
         f.write(page)
 
 
+def write_full_sitemap(posts):
+    """
+    Builds sitemap-full.html at the repo root — a complete, categorized
+    listing of every page on the site (Main, Places, Legal, Information)
+    plus every single blog post, with live counts. Regenerated on every
+    run, so the blog section always reflects exactly what's on Blogger
+    right now.
+    """
+    def group_html(icon, title, items, count_label):
+        rows = "".join(
+            f'\n          <li><a href="{href}">{escape(name)}</a><span>{escape(desc)}</span></li>'
+            for name, href, desc in items
+        )
+        return f'''
+      <div class="sitemap-group">
+        <h3>{icon} {escape(title)} <span style="font-weight:400;color:var(--ink-soft);font-size:.8rem;">({count_label})</span></h3>
+        <ul>{rows}
+        </ul>
+      </div>'''
+
+    main_html = group_html("🏡", "Main Pages", MAIN_PAGES, f"{len(MAIN_PAGES)} pages")
+    places_html = group_html("📍", "Places", PLACE_PAGES, f"{len(PLACE_PAGES)} places")
+    legal_html = group_html("⚖️", "Legal Pages", LEGAL_PAGES, f"{len(LEGAL_PAGES)} page")
+    info_html = group_html("ℹ️", "Information Pages", INFO_PAGES, f"{len(INFO_PAGES)} pages")
+
+    blog_rows = "".join(
+        f'\n          <li><a href="blog/{p["slug"]}.html">{escape(p["title"])}</a><span>{escape(p["date_str"])}</span></li>'
+        for p in posts
+    )
+    blog_html = f'''
+      <div class="sitemap-group" style="grid-column:1/-1;">
+        <h3>📝 Blog Posts <span style="font-weight:400;color:var(--ink-soft);font-size:.8rem;">({len(posts)} posts, synced from Blogger)</span></h3>
+        <ul style="max-height:520px;overflow-y:auto;">{blog_rows if blog_rows else '<li><span>No posts synced yet.</span></li>'}
+        </ul>
+      </div>'''
+
+    total_pages = len(MAIN_PAGES) + len(PLACE_PAGES) + len(LEGAL_PAGES) + len(INFO_PAGES) + len(posts)
+
+    page = ROOT_HEADER_TMPL.format(
+        title="Full Sitemap",
+        description=f"Every single page on the Merahi Village website — {total_pages} pages in total, including all {len(posts)} blog posts, always kept up to date automatically.",
+        canonical=f"{SITE_ROOT}/sitemap-full.html",
+    )
+    page += f'''
+<section class="hero" style="background-image:linear-gradient(160deg, rgba(1,68,33,.90), rgba(11,92,51,.82)), url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop');">
+  <div class="hero-inner">
+    <div class="crumb"><a href="index.html">Home</a> / Full Sitemap</div>
+    <div class="eyebrow">Every Page, Always Up To Date</div>
+    <h1>Full Sitemap</h1>
+    <p class="lede">A complete, categorized list of every page on this website — {total_pages} pages in
+      total, including all {len(posts)} blog posts. The blog section below updates automatically
+      every time a new post is published.</p>
+  </div>
+</section>
+
+<main class="content">
+  <section class="block">
+    <div class="sitemap-grid">{main_html}{places_html}{legal_html}{info_html}{blog_html}
+    </div>
+  </section>
+</main>
+'''
+    page += ROOT_FOOTER_HTML
+    with open(FULL_SITEMAP_PATH, 'w', encoding='utf-8') as f:
+        f.write(page)
+
+
 def main():
     os.makedirs(OUT_DIR, exist_ok=True)
     entries = fetch_feed()
@@ -330,7 +532,8 @@ def main():
 
     posts.sort(key=lambda p: p['date'], reverse=True)
     write_index(posts)
-    print(f"Synced {len(posts)} post(s) into {OUT_DIR}/")
+    write_full_sitemap(posts)
+    print(f"Synced {len(posts)} post(s) into {OUT_DIR}/, and updated sitemap-full.html")
 
 
 if __name__ == "__main__":
