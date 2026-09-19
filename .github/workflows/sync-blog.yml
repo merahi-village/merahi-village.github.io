@@ -5,12 +5,25 @@ on:
     - cron: '*/30 * * * *'
   workflow_dispatch: {}
 
+# contents: write -> so the bot can commit new/updated blog pages
+# pages: write, id-token: write -> so this same run can also deploy to Pages
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+# Same group name as the existing "Deploy static content to Pages" workflow,
+# so the two never clash — they just queue politely behind each other.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   sync:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -27,13 +40,35 @@ jobs:
         run: python3 scripts/sync_blogger.py
 
       - name: Commit and push if anything changed
+        id: commit
         run: |
           git config user.name "merahi-blog-bot"
           git config user.email "actions@github.com"
           git add blog/
           if git diff --cached --quiet; then
             echo "No new or changed posts — nothing to commit."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             git commit -m "Sync: update blog pages from Blogger feed"
             git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
+
+      # These 3 steps only run when something actually changed above —
+      # they do exactly what the repo's existing "static.yml" does,
+      # just triggered manually here since the bot's own push can't
+      # trigger that workflow automatically.
+      - name: Setup Pages
+        if: steps.commit.outputs.changed == 'true'
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        if: steps.commit.outputs.changed == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        if: steps.commit.outputs.changed == 'true'
+        id: deployment
+        uses: actions/deploy-pages@v5
