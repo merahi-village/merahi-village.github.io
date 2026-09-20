@@ -44,7 +44,7 @@ jobs:
         run: |
           git config user.name "merahi-blog-bot"
           git config user.email "actions@github.com"
-          git add blog/
+          git add blog/ sitemap-full.html
           if git diff --cached --quiet; then
             echo "No new or changed posts — nothing to commit."
             echo "changed=false" >> "$GITHUB_OUTPUT"
