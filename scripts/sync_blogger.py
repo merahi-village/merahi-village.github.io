@@ -370,8 +370,20 @@ def fetch_feed():
     return data.get('feed', {}).get('entry', [])
 
 
-def build_post_page(title, content_html, canonical, description, crumb_title, pub_date_str):
+def build_post_page(title, content_html, canonical, description, crumb_title, pub_date_str, sidebar_posts):
     page = HEADER_TMPL.format(title=escape(title), description=escape(description), canonical=canonical)
+
+    sidebar_items = "".join(
+        f'\n            <li><a href="{sp["slug"]}.html">{escape(sp["title"])}</a><span>{escape(sp["date_str"])}</span></li>'
+        for sp in sidebar_posts
+    )
+    sidebar_html = f'''
+        <aside class="blog-sidebar">
+          <h3>📰 Previous Posts</h3>
+          <ul>{sidebar_items}
+          </ul>
+        </aside>''' if sidebar_posts else ''
+
     page += f'''
 <section class="hero" style="background-image:linear-gradient(160deg, rgba(1,68,33,.90), rgba(11,92,51,.82)), url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop');">
   <div class="hero-inner">
@@ -383,10 +395,14 @@ def build_post_page(title, content_html, canonical, description, crumb_title, pu
 
 <main class="content" style="padding-top:40px;">
   <section class="block">
-    <div class="blog-post-body">
+    <div class="blog-post-layout">
+      <div class="blog-post-main">
+        <div class="blog-post-body">
 {content_html}
+        </div>
+        <p style="margin-top:30px;"><a href="index.html" class="btn btn-solid">← Back to Blog</a></p>
+      </div>{sidebar_html}
     </div>
-    <p style="margin-top:30px;"><a href="index.html" class="btn btn-solid">← Back to Blog</a></p>
   </section>
 </main>
 '''
@@ -505,6 +521,10 @@ def main():
     entries = fetch_feed()
     posts = []
 
+    # PASS 1 — gather every post's data first (title, slug, cleaned content,
+    # date, description). We can't write any post's page yet because each
+    # page needs to link to the OTHER most-recent posts in its sidebar,
+    # which means every post has to be known before any page is written.
     for entry in entries:
         title = entry.get('title', {}).get('$t', 'Untitled')
         content_html = entry.get('content', {}).get('$t', '')
@@ -522,15 +542,23 @@ def main():
         slug = slugify_from_url(alt_link)
         description = strip_html_for_description(content_html)
         date_str = pub_date.strftime('%d %B %Y')
-        canonical = f"{SITE_ROOT}/blog/{slug}.html"
 
-        page = build_post_page(title, content_html, canonical, description, title, date_str)
-        with open(os.path.join(OUT_DIR, f"{slug}.html"), 'w', encoding='utf-8') as f:
-            f.write(page)
-
-        posts.append({'title': title, 'slug': slug, 'date': pub_date, 'date_str': date_str, 'description': description})
+        posts.append({
+            'title': title, 'slug': slug, 'date': pub_date, 'date_str': date_str,
+            'description': description, 'content_html': content_html,
+        })
 
     posts.sort(key=lambda p: p['date'], reverse=True)
+
+    # PASS 2 — now that every post is known, write each post's page with a
+    # "Previous Posts" sidebar listing the 7 other most-recent posts.
+    for p in posts:
+        others = [q for q in posts if q['slug'] != p['slug']][:7]
+        canonical = f"{SITE_ROOT}/blog/{p['slug']}.html"
+        page = build_post_page(p['title'], p['content_html'], canonical, p['description'], p['title'], p['date_str'], others)
+        with open(os.path.join(OUT_DIR, f"{p['slug']}.html"), 'w', encoding='utf-8') as f:
+            f.write(page)
+
     write_index(posts)
     write_full_sitemap(posts)
     print(f"Synced {len(posts)} post(s) into {OUT_DIR}/, and updated sitemap-full.html")
