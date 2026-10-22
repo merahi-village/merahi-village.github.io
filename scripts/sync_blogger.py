@@ -427,6 +427,10 @@ def write_index(posts):
         description="Stories and updates from Merahi Village.",
         canonical=f"{SITE_ROOT}/blog/index.html",
     )
+    # Blog index gets its own full title (post pages keep "Post Title | Merahi Village")
+    BLOG_TITLE = "Merahi Village Blog - News, Updates &amp; Stories"
+    page = page.replace("<title>Blog | Merahi Village</title>", f"<title>{BLOG_TITLE}</title>")
+    page = page.replace('<meta property="og:title" content="Blog">', f'<meta property="og:title" content="{BLOG_TITLE}">')
     page += f'''
 <section class="hero" style="background-image:linear-gradient(160deg, rgba(1,68,33,.90), rgba(11,92,51,.82)), url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop');">
   <div class="hero-inner">
