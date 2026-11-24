@@ -370,8 +370,74 @@ def fetch_feed():
     return data.get('feed', {}).get('entry', [])
 
 
-def build_post_page(title, content_html, canonical, description, crumb_title, pub_date_str, sidebar_posts):
+AUTHOR_NAME = "Merahi Team"
+PUBLISHER_LOGO = "https://merahi-village.github.io/images/logo_merahi.webp"
+
+
+def normalize_iso(value):
+    """Blogger gives '2022-11-15T10:30:00.001+05:30'. Google wants ISO 8601 with
+    the timezone offset kept, so drop only the fractional seconds."""
+    m = re.match(r'^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})(?:\.\d+)?(Z|[+-]\d{2}:\d{2})?$', value or '')
+    return (m.group(1) + (m.group(2) or '')) if m else None
+
+
+def extract_images(content_html, limit=3):
+    """Real images used inside the post, for the Article schema. If an image is
+    wrapped in a link to its full-size version, prefer that bigger file."""
+    soup = BeautifulSoup(content_html, 'html.parser')
+    seen, out = set(), []
+    for img in soup.find_all('img'):
+        src = (img.get('src') or '').strip()
+        original_src = src
+        parent = img.parent
+        if parent is not None and parent.name == 'a':
+            href = (parent.get('href') or '').strip()
+            if re.search(r'\.(jpe?g|png|webp|gif)(\?|$)', href, re.I) or 'googleusercontent' in href or 'blogspot' in href:
+                src = href
+        if src.startswith('//'):
+            src = 'https:' + src
+        if not src.startswith(('http://', 'https://')) or src in seen or original_src in seen:
+            continue
+        seen.add(src)
+        seen.add(original_src)
+        out.append(src)
+        if len(out) >= limit:
+            break
+    return out
+
+
+def build_article_schema(title, canonical, description, published_iso, modified_iso, images):
+    """BlogPosting JSON-LD (a type of Article, per Google's Article structured-data guide)."""
+    headline = title if len(title) <= 110 else title[:107].rsplit(' ', 1)[0] + '…'
+    data = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {"@type": "WebPage", "@id": canonical},
+        "headline": headline,
+        "author": {"@type": "Organization", "name": AUTHOR_NAME, "url": SITE_ROOT + "/"},
+        "publisher": {
+            "@type": "Organization",
+            "name": "Merahi Village",
+            "url": SITE_ROOT + "/",
+            "logo": {"@type": "ImageObject", "url": PUBLISHER_LOGO},
+        },
+    }
+    if description:
+        data["description"] = description
+    if images:
+        data["image"] = images
+    if published_iso:
+        data["datePublished"] = published_iso
+    if modified_iso or published_iso:
+        data["dateModified"] = modified_iso or published_iso
+    body = json.dumps(data, ensure_ascii=False, indent=2).replace("</", "<\\/")
+    return '<script type="application/ld+json">\n' + body + '\n</script>\n'
+
+
+def build_post_page(title, content_html, canonical, description, crumb_title, pub_date_str, sidebar_posts,
+                    published_iso=None, modified_iso=None, images=None):
     page = HEADER_TMPL.format(title=escape(title), description=escape(description), canonical=canonical)
+    page = page.replace("</head>", build_article_schema(title, canonical, description, published_iso, modified_iso, images) + "</head>", 1)
 
     sidebar_items = "".join(
         f'\n            <li><a href="{sp["slug"]}.html">{escape(sp["title"])}</a><span>{escape(sp["date_str"])}</span></li>'
@@ -388,7 +454,7 @@ def build_post_page(title, content_html, canonical, description, crumb_title, pu
 <section class="hero" style="background-image:linear-gradient(160deg, rgba(1,68,33,.90), rgba(11,92,51,.82)), url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop');">
   <div class="hero-inner">
     <div class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Blog</a> / {escape(crumb_title)}</div>
-    <div class="eyebrow">{escape(pub_date_str)}</div>
+    <div class="eyebrow">{escape(pub_date_str)} · By {escape(AUTHOR_NAME)}</div>
     <h1 style="font-size:2rem;">{escape(title)}</h1>
   </div>
 </section>
@@ -533,6 +599,7 @@ def main():
         title = entry.get('title', {}).get('$t', 'Untitled')
         content_html = entry.get('content', {}).get('$t', '')
         published = entry.get('published', {}).get('$t', '')
+        updated = entry.get('updated', {}).get('$t', '')
         try:
             pub_date = datetime.strptime(published[:19], '%Y-%m-%dT%H:%M:%S')
         except Exception:
@@ -550,6 +617,8 @@ def main():
         posts.append({
             'title': title, 'slug': slug, 'date': pub_date, 'date_str': date_str,
             'description': description, 'content_html': content_html,
+            'published_iso': normalize_iso(published), 'modified_iso': normalize_iso(updated),
+            'images': extract_images(content_html),
         })
 
     posts.sort(key=lambda p: p['date'], reverse=True)
@@ -559,7 +628,8 @@ def main():
     for p in posts:
         others = [q for q in posts if q['slug'] != p['slug']][:7]
         canonical = f"{SITE_ROOT}/blog/{p['slug']}.html"
-        page = build_post_page(p['title'], p['content_html'], canonical, p['description'], p['title'], p['date_str'], others)
+        page = build_post_page(p['title'], p['content_html'], canonical, p['description'], p['title'], p['date_str'], others,
+                               p['published_iso'], p['modified_iso'], p['images'])
         with open(os.path.join(OUT_DIR, f"{p['slug']}.html"), 'w', encoding='utf-8') as f:
             f.write(page)
 
