@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
   /* ---------- Weather dashboard (weather.html) ---------- */
   var weatherNow = document.getElementById('weatherNow');
   if (weatherNow) {
-    var LAT = 26.422, LON = 84.241;
+    var LAT = 26.07124, LON = 84.401928;
     var WMO = {
       0: ['☀️', 'Clear sky'], 1: ['🌤️', 'Mainly clear'], 2: ['⛅', 'Partly cloudy'], 3: ['☁️', 'Overcast'],
       45: ['🌫️', 'Fog'], 48: ['🌫️', 'Rime fog'],
